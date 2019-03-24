@@ -1,0 +1,26 @@
+$bg-color: #3f3d46;
+$link-color: rgb(18, 236, 135);
+
+$box-border-radius: 4px;
+
+// SREEN SIZES
+$bp-xs: 480px;
+$bp-sm: 640px;
+$bp-md: 800px;
+$bp-lg: 1020px;
+$bp-xl: 1200px;
+
+$bp-array: '{"xs": "#{$bp-xs}", "sm": "#{$bp-sm}", "md": "#{$bp-md}", "lg": "#{$bp-lg}" ,"xl": "#{$bp-xl}"}';
+
+// GRID
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+// ANIMATION
+$transition-speed: 250ms;
+
+// NAVIGATION
+$link-horizontal-margins: 5px;
+
+// BUTTONS
+$btn-border-radius: $box-border-radius;

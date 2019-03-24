@@ -1,0 +1,39 @@
+.nav {
+	background: var(--header-color);
+	padding: 8px 0;
+
+	a {
+		margin: 0 $link-horizontal-margins;
+		text-decoration: none;
+	}
+
+	&__container {
+		padding-left: $link-horizontal-margins;
+		padding-right: $link-horizontal-margins;
+	}
+	&__row {
+		display: flex;
+		justify-content: flex-end;
+		margin-left: -($link-horizontal-margins);
+		margin-right: -($link-horizontal-margins);
+	}
+}
+	
+.btn {
+	display: inline-block;
+	border-radius: $btn-border-radius;
+	padding: 5px 20px;
+	transition: background $transition-speed, color $transition-speed;
+	
+	&--nav {
+		color: white;
+		&.router-link-exact-active {
+			background: $link-color;
+			color: $bg-color;
+		}
+		&:hover {
+			background: lighten($link-color, $amount: 12%);
+			color: $bg-color;
+		}
+	}
+}

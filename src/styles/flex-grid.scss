@@ -1,0 +1,148 @@
+
+@mixin columns($size) {
+	@for $i from 1 through $grid-columns {
+		&--#{$size}-#{$i} {
+			flex: 0 0 percentage($i/$grid-columns);
+			max-width: percentage($i/$grid-columns);
+		}
+	}
+}
+
+/**
+ * mixin that builds the column pusher styles
+ * @param  {string} $size        
+ * 			screen size name
+ * @param  {int} $max-columns
+ * 			The max amount of columns to push from the left
+ * @return all the classes needed
+ */
+// @mixin push($size, $max-columns) {
+// 	@for $i from 1 through $max-columns {
+// 		&-#{$size}-#{$i} {
+// 			margin-left: percentage($i/$grid-columns);
+// 		}
+// 	}
+// }
+
+@mixin push($size, $max-columns, $direction) {
+	@for $i from 1 through $max-columns {
+			&-#{$direction}-#{$size}-#{$i} {
+				margin-#{$direction}: percentage($i/$grid-columns);
+			}
+		// @if $direction == 'left' {
+		// 	&-#{$size}-#{$i} {
+		// 		margin-#{$direction}: percentage($i/$grid-columns);
+		// 	}
+		// } @else {
+		// }
+	}
+}
+
+@mixin pull($size, $max-columns, $direction) {
+	@for $i from 1 through $max-columns {
+		&-#{$direction}-#{$size}-#{$i} {
+			margin-#{$direction}: -(percentage($i/$grid-columns));
+		}
+	}
+}
+
+.flex-col {
+	padding: $grid-gutter-width/2;
+	// padding-right: $grid-gutter-width/2;
+	// padding-left: $grid-gutter-width/2;
+	// margin-top: $grid-gutter-width/2;
+	// margin-bottom: $grid-gutter-width/2;
+
+	@include columns('xs');
+	
+	@media screen and (min-width: $bp-sm) {
+		@include columns('sm');
+	}
+	@media screen and (min-width: $bp-md) {
+		@include columns('md');
+	}
+	@media screen and (min-width: $bp-lg) {
+		@include columns('lg');
+	}
+	@media screen and (min-width: $bp-xl) {
+		@include columns('xl');
+	}
+}
+
+.flex {
+	
+	&--row,
+	&--flush {
+		margin-left: -($grid-gutter-width/2);
+		margin-right: -($grid-gutter-width/2);
+	}
+	&--wrap {
+		flex-wrap: wrap;
+	}
+	&--middle {
+		align-items: center;
+	}
+	&--center {
+		justify-content: center;
+	}
+	&--end {
+		align-self: flex-end;
+	}
+	&--reverse {
+		flex-direction: row-reverse;
+	}
+	&--push-right {
+		margin-left: auto;
+	}
+
+	&--push-left {
+		margin-right: auto;
+	}
+	&--xs {
+		display: flex;
+	}
+	
+	@media screen and (min-width: $bp-sm) {
+		&--sm {
+			display: flex;
+		}
+	}
+	@media screen and (min-width: $bp-md) {
+		&--md {
+			display: flex;
+		}
+	}
+	@media screen and (min-width: $bp-lg) {
+		&--lg {
+			display: flex;
+		}
+	}
+	@media screen and (min-width: $bp-xl) {
+		&--xl {
+			display: flex;
+		}
+	}
+}
+
+.flex-col--push {
+
+	@include push('xs', $grid-columns/2, 'left');
+	@include push('xs', $grid-columns/2, 'right');
+
+	@media screen and (min-width: $bp-sm) {
+		@include push('sm', $grid-columns/2, 'left');
+		@include push('sm', $grid-columns/2, 'right');
+	}
+	@media screen and (min-width: $bp-md) {
+		@include push('md', $grid-columns/2, 'left');
+		@include push('md', $grid-columns/2, 'right');
+	}
+	@media screen and (min-width: $bp-lg) {
+		@include push('lg', $grid-columns/2, 'left');
+		@include push('lg', $grid-columns/2, 'right');
+	}
+	@media screen and (min-width: $bp-xl) {
+		@include push('xl', $grid-columns/2, 'left');
+		@include push('xl', $grid-columns/2, 'right');
+	}
+}

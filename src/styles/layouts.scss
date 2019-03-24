@@ -1,0 +1,29 @@
+.container {
+	width: 100%;
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: $grid-gutter-width/2;
+	padding-right: $grid-gutter-width/2;
+}
+.full-page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.header {
+	background: darken($bg-color, 3%);
+	color: white;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.footer {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background: darken($color: $bg-color, $amount: 8%);
+	text-align: center;
+	border-top: darken($color: $bg-color, $amount: 10%) 1px solid;
+}

@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app" class="full-page">
+		<Header v-bind:headerColor="'#3f3d46'" />
+		<Banner v-bind:pageTitle="getPageTitle"/>
+		<div class="content-body">
+			<div class="container">
+				<router-view/>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				Blog Example - Joseph McMurray
+			</div>
+		</footer>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './views/partials/Header'
+import Banner from './views/partials/Banner'
+import {mapGetters} from 'vuex'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+	name: "app",
+	components: {
+		Header,
+		Banner
+	},
+	computed: mapGetters(["getPageTitle"])
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "styles/main";
 </style>
