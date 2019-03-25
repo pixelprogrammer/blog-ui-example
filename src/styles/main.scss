@@ -16,14 +16,26 @@ body {
 @import "flex-grid";
 @import "layouts";
 @import "nav";
+@import "notifications";
+@import "ui";
 @import "header";
-
+@import "posts";
 
 .content-body {
   background: linear-gradient(to bottom, lighten($bg-color, 4%), darken($bg-color, 6%));
-  padding-top: 40px;
-  padding-bottom: 40px;
   flex: 2;
   // align-self: stretch;
   width: 100%;
+  min-height: 100px;
+}
+.inside-body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bg-gradient {
+  background: linear-gradient(to bottom, lighten($bg-color, 4%), darken($bg-color, 6%));
+
+}
+.relative {
+  position: relative;
 }

@@ -18,22 +18,4 @@
 		margin-right: -($link-horizontal-margins);
 	}
 }
-	
-.btn {
-	display: inline-block;
-	border-radius: $btn-border-radius;
-	padding: 5px 20px;
-	transition: background $transition-speed, color $transition-speed;
-	
-	&--nav {
-		color: white;
-		&.router-link-exact-active {
-			background: $link-color;
-			color: $bg-color;
-		}
-		&:hover {
-			background: lighten($link-color, $amount: 12%);
-			color: $bg-color;
-		}
-	}
-}
+

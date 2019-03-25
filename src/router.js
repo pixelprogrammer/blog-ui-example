@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Blog from './views/Blog.vue'
+import Post from './views/Post.vue'
+import PostEdit from './views/PostEdit.vue'
 
 Vue.use(Router)
 
@@ -26,9 +28,14 @@ export default new Router({
       component: Blog
     },
     {
+      path: '/blog/edit/:id',
+      name: 'post-edit',
+      component: PostEdit
+    },
+    {
       path: '/blog/:id',
       name: 'post-single',
-      component: Blog
+      component: Post
     },
     {
       path: '/about',

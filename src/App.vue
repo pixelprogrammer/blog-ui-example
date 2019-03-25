@@ -2,16 +2,12 @@
 	<div id="app" class="full-page">
 		<Header v-bind:headerColor="'#3f3d46'" />
 		<Banner v-bind:pageTitle="getPageTitle"/>
-		<div class="content-body">
-			<div class="container">
-				<router-view/>
-			</div>
-		</div>
-		<footer class="footer">
+		<router-view/>
+		<!-- <footer class="footer">
 			<div class="container">
 				Blog Example - Joseph McMurray
 			</div>
-		</footer>
+		</footer> -->
 	</div>
 </template>
 
@@ -32,3 +28,5 @@ export default {
 <style lang="scss">
 @import "styles/main";
 </style>
+<style src="cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css"></style>
+

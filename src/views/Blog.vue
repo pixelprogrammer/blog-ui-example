@@ -1,7 +1,15 @@
 <template>
-	<div class="flex--xs flex--row">
-		<div v-bind:key="post.id" v-for="post in allPosts" class="flex-col flex-col--sm-4">
-			<PostExcerpt v-bind:post="post" />
+	<div class="content-body">
+		<div class="container">
+			<div class="inside-body">
+				<div class="flex--xs flex--row flex--wrap">
+					<div v-bind:key="post.id" v-for="post in allPosts" class="flex-col flex-col--sm-4">
+						<PostExcerpt v-bind:post="post" />
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 </template>
@@ -17,7 +25,7 @@ export default {
 		PostExcerpt,
 	},
 	methods: {
-		...mapActions(["updatePageTitle"])
+		...mapActions(["updatePageTitle", "fetchAllPosts"])
 	},
 	computed: mapGetters(['allPosts']),
 	beforeRouteUpdate(to, from, next) {
@@ -25,6 +33,14 @@ export default {
 	},
 	created() {
 		this.updatePageTitle('Blog')
+		let posts = this.allPosts
+		// We don't want to load it again when we visit this view after editing a post, we just want to work with what we updated since a fresh load
+		// This is just a demo after all
+		if( posts.length == 0 ) {
+			console.log("fetching...")
+			this.fetchAllPosts()
+		}
+
 	}
 }
 </script>

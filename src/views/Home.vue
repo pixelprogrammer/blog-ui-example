@@ -1,6 +1,10 @@
 <template>
-  <div id="home">
-    <div class="container">This is the homepage</div>
+  <div class="content-body">
+    <div class="container">
+      <div class="inside-body">
+        Dashboard content here
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,16 +34,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
-  }
-</style>

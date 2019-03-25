@@ -1,30 +1,68 @@
+// endpoints
+const ENDPOINT_POSTS = "https://jsonplaceholder.typicode.com/posts"
+
 const state = {
 	posts: [
-		{
-			id: 1,
-			title: "This is a test post",
-			content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, vitae provident? Commodi officiis atque adipisci doloremque a sint ad inventore possimus provident, veniam libero cumque ducimus temporibus quod nobis consectetur!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, vitae provident? Commodi officiis atque adipisci doloremque a sint ad inventore possimus provident, veniam libero cumque ducimus temporibus quod nobis consectetur!"
-		},
-		{
-			id: 2,
-			title: "This is post number 2",
-			content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, vitae provident? Commodi officiis atque adipisci doloremque a sint ad inventore possimus provident, veniam libero cumque ducimus temporibus quod nobis consectetur!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, vitae provident? Commodi officiis atque adipisci doloremque a sint ad inventore possimus provident, veniam libero cumque ducimus temporibus quod nobis consectetur!"
-		},
-		{
-			id: 3,
-			title: "This is the third post",
-			content: "Lorem ipsum dolor sit, amet"
-		},
-	]
+	],
+	currentPost: {}
 }
 
 const getters = {
-	allPosts: state => state.posts
+	allPosts: state => state.posts,
+	getPost: state => state.currentPost
 }
 
-const actions = {}
+const actions = {
+	fetchPost: ({commit}, id) => {
+		
 
-const mutations = {}
+		fetch(ENDPOINT_POSTS + "/" + id)
+			.then(res => {
+				if(res.ok) {
+					return res.json()
+				}
+			})
+			.then(data => {
+				commit("setCurrentPost", data)
+			})
+			.catch(err => console.error(err))
+	},
+	fetchAllPosts: ({commit}) => {
+		fetch(ENDPOINT_POSTS)
+			.then(res => {
+				if(res.ok) {
+					return res.json()
+				}
+			})
+			.then(data => {
+				commit("setPosts", data)
+			})
+			.catch(err => console.error(err))
+	},
+	updatePost: ({commit}, post) => {
+		commit("updatePost", post)
+	},
+	addPost: ({commit}, post) => {
+		commit("addPost", post)
+	},
+	deletePost: ({commit}, postID) => {
+		commit("deletePost", postID)
+	}
+}
+
+const mutations = {
+	setCurrentPost: (state, post) => (state.currentPost = post),
+	setPosts: (state, posts) => (state.posts = posts),
+	updatePost: (state, updatePost) => {
+		console.log("The updated post: ", updatePost)
+		const postIndex = state.posts.findIndex(post => post.id === updatePost.id )
+		if( postIndex !== -1) {
+			state.posts.splice(postIndex, 1, updatePost)
+		}
+	},
+	addPost: (state, post) => (state.posts.unshift(post)),
+	deletePost: (state, postID) => (state.posts = state.posts.filter(post => post.id !== postID))
+}
 
 export default {
 	state,

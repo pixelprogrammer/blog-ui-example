@@ -1,0 +1,55 @@
+	
+.btn {
+	display: inline-block;
+	border-radius: $btn-border-radius;
+	border: 0;
+	padding: 5px 20px;
+	text-decoration: none;
+	transition: background $transition-speed, color $transition-speed, box-shadow $transition-speed;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	font-weight: bold;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&--nav {
+		color: white;
+		&.router-link-exact-active {
+			background: $link-color;
+			color: $bg-color;
+		}
+		&:hover {
+			background: lighten($link-color, $amount: 12%);
+			color: $bg-color;
+		}
+	}
+
+	&--primary {
+		background: $link-color;
+		color: $bg-color;
+
+		&:hover {
+			background: lighten($link-color, $amount: 12%);
+			box-shadow: 0 0 10px rgba($color: $link-color, $alpha: 0.5);
+		}
+	}
+	&--action {
+		background: $color-info;
+		color: white;
+
+		&:hover {
+			background: lighten($color: $color-info, $amount: 8%);
+			box-shadow: 0 0 10px rgba($color: $color-info, $alpha: 0.5);
+		}
+	}
+	&--error {
+		background: $color-error;
+
+		&:hover {
+			background: lighten($color: $color-error, $amount: 8%);
+			box-shadow: 0 0 10px rgba($color: $color-error, $alpha: 0.5);
+		}
+	}
+}

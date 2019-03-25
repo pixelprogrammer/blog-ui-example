@@ -15,7 +15,7 @@
 import uuid from 'uuid';
 
 export default {
-	name: "AddPost",
+	name: "PostAdd",
 	data() {
 		return {
 			title: ''

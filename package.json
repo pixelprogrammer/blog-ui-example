@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "cxlt-vue2-toastr": "^1.1.0",
+    "marked": "^0.6.1",
     "uuid": "^3.3.2",
     "vue": "^2.6.6",
     "vue-router": "^3.0.2",
@@ -34,7 +36,10 @@
       "eslint:recommended"
     ],
     "rules": {
-      "indent": ["error", "tab"]
+      "indent": [
+        "error",
+        "tab"
+      ]
     },
     "parserOptions": {
       "parser": "babel-eslint"
